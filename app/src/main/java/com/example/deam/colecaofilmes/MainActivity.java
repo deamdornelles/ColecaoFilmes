@@ -27,12 +27,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        tv = (TextView) findViewById(R.id.hello);
-        AsyncCallWS task = new AsyncCallWS();
-        task.execute();
+
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            tv = (TextView) findViewById(R.id.hello);
+            AsyncCallWS task = new AsyncCallWS();
+            task.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     private class AsyncCallWS extends AsyncTask<String, Void, Void> {
