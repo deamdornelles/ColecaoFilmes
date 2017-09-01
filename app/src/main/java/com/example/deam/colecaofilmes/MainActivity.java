@@ -1,5 +1,6 @@
 package com.example.deam.colecaofilmes;
 
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private final String NAMESPACE = "http://ws/";
 

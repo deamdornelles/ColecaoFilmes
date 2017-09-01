@@ -27,51 +27,48 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp">
 
+
         <TextView
             android:id="@+id/textView4"
-            style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Login" />
 
         <EditText
-            android:id="@+id/editText4"
-            android:layout_marginTop="20dp"
+            android:id="@+id/loginCadastro"
             android:layout_width="285dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="" />
 
         <TextView
             android:id="@+id/textView5"
-            style="@style/TextView"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Senha" />
 
         <EditText
-            android:id="@+id/editText3"
-            android:layout_marginTop="20dp"
+            android:id="@+id/senhaCadastro"
             android:layout_width="285dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="" />
 
         <Button
             android:id="@+id/button2"
-            style="@style/Button"
-            android:background="@drawable/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:onClick="entrar"
             android:text="Entrar" />
 
         <TextView
             android:id="@+id/textView6"
-            style="@style/TextView"
             android:layout_marginTop="60dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

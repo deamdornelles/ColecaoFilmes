@@ -1,5 +1,7 @@
 package com.example.deam.colecaofilmes;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,10 +20,11 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-public class NovaContaActivity extends AppCompatActivity {
+public class NovaContaActivity extends Activity {
 
-    TextView loginCadastro;
-    TextView senhaCadastro;
+    EditText loginCadastro;
+    EditText senhaCadastro;
+    String retorno;
 
     private final String NAMESPACE = "http://ws/";
 
@@ -33,8 +37,8 @@ public class NovaContaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_conta);
 
-        loginCadastro = (TextView) findViewById(R.id.loginCadastro);
-        senhaCadastro = (TextView) findViewById(R.id.senhaCadastro);
+        loginCadastro = (EditText) findViewById(R.id.loginCadastro);
+        senhaCadastro = (EditText) findViewById(R.id.senhaCadastro);
     }
 
     public void cadastrarUsuario(View v) {
@@ -51,7 +55,9 @@ public class NovaContaActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void result) {
-            Toast.makeText(NovaContaActivity.this, "Conta cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(NovaContaActivity.this, retorno, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(NovaContaActivity.this, LoginActivity.class);
+            NovaContaActivity.this.startActivity(intent);
         }
 
         @Override
@@ -96,13 +102,12 @@ public class NovaContaActivity extends AppCompatActivity {
 
             try {
                 androidHttpTransport.call(SOAP_ACTION, envelope);
-                //SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
-                //SoapObject result = (SoapObject)envelope.bodyIn;
+                SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+                retorno = response.toString();
 
             } catch (Exception e) {
-                //e.printStackTrace();
-                Log.w("myApp", e.getMessage());
-                Log.w("myApp", e.getCause());
+                //Log.w("myApp", e.getMessage());
+                //Log.w("myApp", e.getCause());
             }
         }
     }
